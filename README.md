@@ -2,6 +2,8 @@
 
 GaugeMeterView can be used for create meter indicators which give ability for customizations.
 
+![Default Gauge](https://github.com/dhrebeniuk/GaugeMeterView/blob/master/GaugeMeterImage.png?raw=true)
+
 ## Installation
 Via [CocoaPods](http://cocoapods.org):
 ```ruby
