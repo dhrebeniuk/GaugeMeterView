@@ -18,9 +18,12 @@ You can use such code:
 let gaugeMeterView = GaugeMeterView()
 
 gaugeMeterView.gaugeAngle = 30.0
-gaugeMeterView.gaugeValuesScale = 2.0
+gaugeMeterView?.arrowBorderColor = UIColor.black
+gaugeMeterView?.gaugeRangeValuesColor = UIColor.black
 
 gaugeMeterView.ranges = [(value: 100.0, color: blue, title: "Low"), (value: 200, color: green, title: "Medium"), (value: 300.0, color: red, title: "High")]
+
+gaugeMeterView?.value = 120.0
 
 ```
 

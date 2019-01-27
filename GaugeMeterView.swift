@@ -53,6 +53,12 @@ public class GaugeMeterView: UIView {
         }
     }
     
+    public var arrowBorderColor: UIColor = UIColor.black {
+        didSet {
+            setupArrow()
+        }
+    }
+    
     override public func layoutSubviews() {
 		super.layoutSubviews()
 		
@@ -109,7 +115,7 @@ public class GaugeMeterView: UIView {
 				layerLabelRanges.append((value: range.value, color: range.color.cgColor, title: range.title))
 			}
 		}
-		
+        
 		rangeLabelsLayer?.removeFromSuperlayer()
 		rangeLabelsLayer = GaugeRangeLabelsLayer()
 		rangeLabelsLayer?.frame = layer.bounds
@@ -125,7 +131,10 @@ public class GaugeMeterView: UIView {
 		arrowLayer?.removeFromSuperlayer()
 		arrowLayer = GaugeArrowLayer()
 		arrowLayer?.frame = layer.bounds
-		arrowLayer?.gaugeAngle = gaugeAngle
+        let maxValue = ranges?.reduce(0) { return max($0, $1.value) } ?? 360.0
+        arrowLayer?.maxValue = maxValue
+        arrowLayer?.gaugeAngle = gaugeAngle
+        arrowLayer?.arrowBorderColor = arrowBorderColor
 		arrowLayer?.setupArrow()
         arrowLayer.map { layer.addSublayer($0) }
 	}

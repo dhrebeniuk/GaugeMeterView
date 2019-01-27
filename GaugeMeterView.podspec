@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "GaugeMeterView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "GaugeMeterView can be used for create meter indicators"
   s.description  = "GaugeMeterView can be used for create meter indicators which give ability for customizations"
 

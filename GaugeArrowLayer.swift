@@ -24,6 +24,12 @@ class GaugeArrowLayer: CALayer {
 			setupRotation()
 		}
 	}
+    
+    var arrowBorderColor: UIColor = UIColor.white {
+        didSet {
+            setupArrow()
+        }
+    }
 	
 	var gaugeAngle: Float = 30.0 {
 		didSet {
@@ -46,8 +52,8 @@ class GaugeArrowLayer: CALayer {
 		let center = CGPoint(x: bounds.midX, y: bounds.midY)
 		let radius = min(bounds.midX, bounds.midY)
 		let shapeLayer = CAShapeLayer()
-		shapeLayer.strokeColor = UIColor.white.cgColor
-		shapeLayer.fillColor = UIColor.white.withAlphaComponent(0.1).cgColor
+		shapeLayer.strokeColor = arrowBorderColor.cgColor
+		shapeLayer.fillColor = arrowBorderColor.withAlphaComponent(0.1).cgColor
 		
 		let path = CGMutablePath()
 		let leftCenter = CGPoint(x: center.x - radius/12.0, y: center.y)
@@ -63,7 +69,7 @@ class GaugeArrowLayer: CALayer {
 		
 		let circleRadius = CGFloat(radius/8.0)
 		let newCircleLayer = CAShapeLayer()
-		newCircleLayer.strokeColor = UIColor.white.cgColor
+		newCircleLayer.strokeColor = arrowBorderColor.cgColor
 		newCircleLayer.fillColor = UIColor.darkGray.cgColor
 		let circlePath = CGMutablePath()
 		let circleRect = CGRect(x: center.x-circleRadius, y: center.y-circleRadius, width: circleRadius*2.0, height: circleRadius*2.0)
