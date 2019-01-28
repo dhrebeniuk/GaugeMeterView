@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.license      = "LICENSE"
   s.author             = { "Dmytro Hrebeniuk" => "dmytrohrebeniuk@gmail.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/dhrebeniuk/GaugeMeterView", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/dhrebeniuk/GaugeMeterView.git", :tag => "#{s.version}" }
   s.source_files  = "*.{swift,h}"
 
   s.requires_arc = true
