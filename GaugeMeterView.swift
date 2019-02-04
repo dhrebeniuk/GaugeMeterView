@@ -31,11 +31,17 @@ public class GaugeMeterView: UIView {
 	
 	public var value: Float = 0.0 {
 		didSet {
-			arrowLayer?.value = value
+            arrowLayer?.value = value - gaugeValuesOffset
 		}
 	}
     
     public var gaugeValuesScale: Float = 1.0 {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    public var gaugeValuesOffset: Float = 0.0 {
         didSet {
             updateUI()
         }
@@ -106,6 +112,7 @@ public class GaugeMeterView: UIView {
 		rangeValuesLayer?.gaugeAngle = gaugeAngle
 		rangeValuesLayer?.setupRangeValues()
         rangeValuesLayer?.gaugeValuesScale = gaugeValuesScale
+        rangeValuesLayer?.gaugeValuesOffset = gaugeValuesOffset
         rangeValuesLayer?.gaugeRangeValuesColor = gaugeRangeValuesColor
         rangeValuesLayer.map { layer.addSublayer($0) }
         
@@ -132,8 +139,8 @@ public class GaugeMeterView: UIView {
 		arrowLayer = GaugeArrowLayer()
 		arrowLayer?.frame = layer.bounds
         let maxValue = ranges?.reduce(0) { return max($0, $1.value) } ?? 360.0
-        arrowLayer?.maxValue = maxValue
-        arrowLayer?.gaugeAngle = gaugeAngle
+        arrowLayer?.maxValue = maxValue / gaugeValuesScale
+        arrowLayer?.gaugeAngle = gaugeAngle / gaugeValuesScale
         arrowLayer?.arrowBorderColor = arrowBorderColor
 		arrowLayer?.setupArrow()
         arrowLayer.map { layer.addSublayer($0) }

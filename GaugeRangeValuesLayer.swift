@@ -29,6 +29,12 @@ class GaugeRangeValuesLayer: CALayer {
             setupRangeValues()
         }
     }
+
+    var gaugeValuesOffset: Float = 0.0 {
+        didSet {
+            setupRangeValues()
+        }
+    }
     
     var gaugeRangeValuesColor: UIColor = UIColor.white {
         didSet {
@@ -59,7 +65,7 @@ class GaugeRangeValuesLayer: CALayer {
 			layer.contentsScale = contentsScale
 			layer.foregroundColor = gaugeRangeValuesColor.cgColor
 			layer.frame = bounds.insetBy(dx: +radius/3.5, dy: +radius/3.5)
-            layer.string = "\(Int(Float(value) / gaugeValuesScale))"
+            layer.string = "\(Int(Float(value) / gaugeValuesScale + gaugeValuesOffset))"
 			layer.alignmentMode = kCAAlignmentCenter
  
 			let degress = Float(value) + gaugeAngle + 180.0
