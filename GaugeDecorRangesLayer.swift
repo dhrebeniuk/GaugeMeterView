@@ -15,7 +15,7 @@ class GaugeDecorRangesLayer: CALayer {
 		}
 	}
 	
-	var gaugeAngle: Float = 0.0 {
+	var gaugeAngle: Float = 30.0 {
 		didSet {
 			setupScales()
 		}

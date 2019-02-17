@@ -31,7 +31,7 @@ public class GaugeMeterView: UIView {
 	
 	public var value: Float = 0.0 {
 		didSet {
-            arrowLayer?.value = value - gaugeValuesOffset
+            arrowLayer?.value = (value - gaugeValuesOffset)*gaugeValuesScale
 		}
 	}
     
@@ -138,9 +138,9 @@ public class GaugeMeterView: UIView {
 		arrowLayer?.removeFromSuperlayer()
 		arrowLayer = GaugeArrowLayer()
 		arrowLayer?.frame = layer.bounds
-        let maxValue = ranges?.reduce(0) { return max($0, $1.value) } ?? 360.0
-        arrowLayer?.maxValue = maxValue / gaugeValuesScale
-        arrowLayer?.gaugeAngle = gaugeAngle / gaugeValuesScale
+        let maxValue = (ranges?.reduce(0) { return max($0, $1.value) } ?? 360.0)
+        arrowLayer?.maxValue = maxValue
+        arrowLayer?.gaugeAngle = gaugeAngle * gaugeValuesScale
         arrowLayer?.arrowBorderColor = arrowBorderColor
 		arrowLayer?.setupArrow()
         arrowLayer.map { layer.addSublayer($0) }

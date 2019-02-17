@@ -38,7 +38,7 @@ class GaugeArrowLayer: CALayer {
 	}
 	
 	private func setupRotation() {
-		let angle = CGFloat(value*(360.0-2.0*gaugeAngle)/maxValue + gaugeAngle)*CGFloat(Float.pi/180.0) - CGFloat.pi
+		let angle = CGFloat(value)*CGFloat.pi/180.0 + CGFloat.pi*CGFloat(0.5*gaugeAngle/(maxValue-gaugeAngle)) - CGFloat.pi
 		let transform = CGAffineTransform(rotationAngle: angle)
 		
 		arrowLayer?.setAffineTransform(transform)
