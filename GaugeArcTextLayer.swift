@@ -60,9 +60,9 @@ class GaugeArcTextLayer: CALayer {
 		return 2.0 * asin(chord / (2.0 * radius))
 	}
 	
-	var textAttributes: [NSAttributedStringKey: Any] {
+    var textAttributes: [NSAttributedString.Key: Any] {
 		let color = foregroundColor ?? UIColor.black
-		var attributes: [NSAttributedStringKey: Any] = [.foregroundColor: color]
+        var attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
 		font.map() {
 			attributes[.font] = $0
 		}
