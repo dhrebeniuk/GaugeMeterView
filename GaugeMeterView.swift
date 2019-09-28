@@ -140,7 +140,7 @@ public class GaugeMeterView: UIView {
 		arrowLayer?.frame = layer.bounds
         let maxValue = (ranges?.reduce(0) { return max($0, $1.value) } ?? 360.0)
         arrowLayer?.maxValue = maxValue
-        arrowLayer?.gaugeAngle = gaugeAngle * gaugeValuesScale
+        arrowLayer?.gaugeAngle = gaugeAngle
         arrowLayer?.arrowBorderColor = arrowBorderColor
 		arrowLayer?.setupArrow()
         arrowLayer.map { layer.addSublayer($0) }

@@ -66,7 +66,7 @@ class GaugeRangeValuesLayer: CALayer {
 			layer.foregroundColor = gaugeRangeValuesColor.cgColor
 			layer.frame = bounds.insetBy(dx: +radius/3.5, dy: +radius/3.5)
             layer.string = "\(Int(Float(value) / gaugeValuesScale + gaugeValuesOffset))"
-            layer.alignmentMode = CATextLayerAlignmentMode.center
+            layer.alignmentMode = kCAAlignmentCenter
  
 			let degress = Float(value) + gaugeAngle + 180.0
 			let radians = degress/180.0*Float.pi
