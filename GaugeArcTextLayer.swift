@@ -78,18 +78,17 @@ class GaugeArcTextLayer: CALayer {
 		context.translateBy(x: r * cos(theta), y: -(r * sin(theta)))
 		context.translateBy(x: bounds.width/2, y: bounds.height/2)
 
-		let rect = CGRect(x: 0.0, y: 0.0, width: textSize.width, height: textSize.height)
-		let path = CGPath(rect: rect, transform: nil)
 		let attrString = NSAttributedString(string: string, attributes: textAttributes)
-		let framesetter = CTFramesetterCreateWithAttributedString(attrString as CFAttributedString)
-		let frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, attrString.length), path, nil)
 		
-		context.scaleBy(x: -1.0, y: 1.0)
-		context.rotate(by: slantAngle)
-		
+        context.rotate(by: -slantAngle - .pi)
+
 		context.translateBy(x: -textSize.width/2.0, y: -textSize.height/2.0)
-		
-		CTFrameDraw(frame, context)
+
+        UIGraphicsPushContext(context)
+        
+        attrString.draw(at: .zero)
+        
+        UIGraphicsPopContext()
 		
 		context.restoreGState()
 	}
