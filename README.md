@@ -1,3 +1,5 @@
+#Ban Russia from SWIFT! Protect Ukrainian Sky! Send NATO to Ukraine! #BanRussiafromSwift #CloseTheSky #SendNatoToUkraine
+
 # GaugeMeterView
 
 GaugeMeterView can be used for create meter indicators which give ability for customizations.
